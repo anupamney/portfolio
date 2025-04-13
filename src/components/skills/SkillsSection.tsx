@@ -27,7 +27,6 @@ const skills = [
 export default function SkillsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.1, margin: "0px 0px -100px 0px" });
-  const [animationMode, setAnimationMode] = useState<'sequential' | 'staggered'>('staggered');
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   
   // Memoize skill categories for better performance
@@ -39,15 +38,12 @@ export default function SkillsSection() {
       design: skills.filter(s => ['Figma'].includes(s.name)),
       testing: skills.filter(s => ['Jest'].includes(s.name)),
     };
-  }, []);
-  
-  // Optimized stagger values for animations
-  const staggerValues = useMemo(() => {
-    return {
-      staggerChildren: animationMode === 'sequential' ? 0.05 : 0.1,
+  }, []);  
+
+  const staggerValues = {
+      staggerChildren:  0.05,
       delayChildren: 0.1,
-    };
-  }, [animationMode]);
+    }
 
   return (
     <section id="skills" className={styles.section}>
@@ -80,41 +76,7 @@ export default function SkillsSection() {
             }}
           >
             A selection of technical skills and technologies I&apos;ve worked with
-          </motion.p>
-          
-          {/* Animation mode toggle for accessibility */}
-          <motion.div 
-            className={styles.animationToggle}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 0.5, delay: 0.2 } }
-            }}
-          >
-            <button 
-              onClick={() => setAnimationMode('sequential')}
-              className={`${styles.toggleButton} ${
-                animationMode === 'sequential' 
-                  ? styles.active
-                  : styles.inactive
-              }`}
-              aria-label="Sequential Animation"
-            >
-              Sequential
-            </button>
-            <button 
-              onClick={() => setAnimationMode('staggered')}
-              className={`${styles.toggleButton} ${
-                animationMode === 'staggered' 
-                  ? styles.active
-                  : styles.inactive
-              }`}
-              aria-label="Staggered Animation"
-            >
-              Staggered
-            </button>
-          </motion.div>
+          </motion.p>          
         </div>
         
         <motion.div
@@ -166,23 +128,6 @@ export default function SkillsSection() {
                   </div>
                 </div>
                 <h3 className={styles.skillName}>{skill.name}</h3>
-              </div>
-              
-              <div className={styles.progressBar}>
-                <motion.div
-                  className={`${styles.progressFill} ${
-                    hoveredSkill === skill.name
-                      ? styles.hovered
-                      : styles.default
-                  }`}
-                  initial={{ width: 0 }}
-                  animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                  transition={{ 
-                    duration: 1.2, 
-                    delay: animationMode === 'sequential' ? index * 0.1 : 0.2,
-                    ease: "easeOut" 
-                  }}
-                />
               </div>
               
               <div className={styles.progressLabels}>

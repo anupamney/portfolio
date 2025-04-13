@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import styles from './HeroSection.module.scss';
 
@@ -22,6 +22,7 @@ const particleData = Array.from({ length: 40 }).map((_, i) => ({
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && titleRef.current) {
@@ -46,6 +47,21 @@ export default function HeroSection() {
       };
     }
   }, []);
+
+  // Add scroll event listener to detect when user has scrolled
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10 && !hasScrolled) {
+        setHasScrolled(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasScrolled]);
 
   return (
     <section
@@ -205,22 +221,108 @@ export default function HeroSection() {
           </motion.div>
         </div>
         
-        {/* Scroll indicator */}
-        <motion.div
-          className={styles.scrollIndicator}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 1, ease: [0.19, 1, 0.22, 1] }}
-        >
-          <span className={styles.scrollText}>Scroll Down</span>
-          <div className={styles.mouseIcon}>
+        {/* Scroll indicator with AnimatePresence for smooth exit */}
+        <AnimatePresence>
+          {!hasScrolled && (
             <motion.div
-              className={styles.mouseWheel}
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: 'loop' }}
-            />
-          </div>
-        </motion.div>
+              className={styles.scrollIndicator}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div 
+                className={styles.scrollText}
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                }}
+              >
+                Scroll
+              </motion.div>
+              
+              <motion.div className={styles.scrollChevrons}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                {/* Animated circle */}
+                <motion.div 
+                  className={styles.scrollCircle}
+                  animate={{ scale: [0.9, 1.1, 0.9] }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                  }}
+                />
+                
+                {/* Pulsing background */}
+                <motion.div
+                  className={styles.pulse}
+                  animate={{ 
+                    scale: [0, 1.5, 0],
+                    opacity: [0, 0.3, 0]
+                  }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity, 
+                    repeatType: 'loop',
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Three chevron arrows with staggered animation */}
+                <motion.div 
+                  className={styles.chevron}
+                  animate={{ 
+                    y: [0, 8, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0.3, 1, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    repeatType: 'loop',
+                    delay: 0
+                  }}
+                />
+                
+                <motion.div 
+                  className={styles.chevron}
+                  animate={{ 
+                    y: [0, 8, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0.3, 1, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    repeatType: 'loop',
+                    delay: 0.2
+                  }}
+                />
+                
+                <motion.div 
+                  className={styles.chevron}
+                  animate={{ 
+                    y: [0, 8, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0.3, 1, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    repeatType: 'loop',
+                    delay: 0.4
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </section>
   );

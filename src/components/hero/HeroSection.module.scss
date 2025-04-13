@@ -211,37 +211,95 @@
 
 // Scroll indicator
 .scrollIndicator {
-  position: absolute;
-  bottom: 2.5rem;
+  position: fixed;
+  bottom: 5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 20;
+  z-index: 50;
+  pointer-events: none;
+  width: 80px;
 }
 
 .scrollText {
-  color: rgba(237, 237, 237, 0.6);
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
+  color: rgba(237, 237, 237, 0.8);
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.mouseIcon {
-  width: 1.5rem;
-  height: 2.5rem;
-  border: 2px solid rgba(237, 237, 237, 0.2);
-  border-radius: 9999px;
+.scrollChevrons {
+  position: relative;
+  width: 40px;
+  height: 60px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-top: 0.5rem;
+  gap: 8px;
 }
 
-.mouseWheel {
-  width: 0.25rem;
-  height: 0.375rem;
-  background-color: #3b82f6;
-  border-radius: 9999px;
+.chevron {
+  position: relative;
+  width: 20px;
+  height: 4px;
+  opacity: 0;
+  transform: scale(0.3);
+  margin: 0 auto;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #3b82f6;
+    border-radius: 2px;
+  }
+
+  &:before {
+    left: 0;
+    transform: skewY(30deg);
+  }
+
+  &:after {
+    right: 0;
+    width: 50%;
+    transform: skewY(-30deg);
+  }
+}
+
+.scrollCircle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
+.pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.1);
 }
 
 // 3D effect for hero title

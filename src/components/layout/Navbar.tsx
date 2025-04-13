@@ -105,14 +105,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[100px] ${
         isScrolled
           ? 'bg-[#0a0a0a]/80 backdrop-blur-md shadow-sm'
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex items-center justify-between h-full">
           {/* Logo */}
           <motion.div
             initial="hidden"
