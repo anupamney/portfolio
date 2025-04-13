@@ -1,6 +1,6 @@
 // About section styles
 .section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   position: relative;
   overflow: hidden;
   background-color: #0a0a0a;
@@ -50,7 +50,7 @@
 
 // Section header
 .header {
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
@@ -94,8 +94,9 @@
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
+  margin-bottom: 1.5rem;
   
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -213,31 +214,34 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 5rem;
+  gap: 1rem;
+  margin-top: 0;
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
 }
 
 .statsCard {
-  background-color: #111827;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  background-color: #1f2b44;
+  border-radius: 0.75rem;
+  padding: 1.5rem 1rem;
   text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid #374151;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1a2436;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
   
   &:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.2), 0 8px 12px -2px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
-    border-color: rgba(59, 130, 246, 0.5);
+    border-color: rgba(59, 130, 246, 0.3);
   }
   
   .statsValue {
-    font-size: 1.875rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #3b82f6;
     margin-bottom: 0.5rem;
@@ -248,7 +252,92 @@
   }
   
   .statsLabel {
-    font-size: 0.875rem;
-    color: rgba(237, 237, 237, 0.7);
+    color: rgba(237, 237, 237, 0.925);
+    font-size: 0.95rem;
+    font-weight: 500;
+    
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Highlighted card (for Leetcode rating)
+.highlightCard {
+  border-color: rgba(59, 130, 246, 0.5);
+  position: relative;
+  z-index: 1;
+  
+  // Enhanced glow effect
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.25), transparent 80%);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0));
+    border-radius: 0.85rem;
+    z-index: -1;
+    animation: borderGlow 3s infinite alternate;
+    opacity: 0.5;
+    filter: blur(3px);
+  }
+  
+  &:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 25px -5px rgba(59, 130, 246, 0.15), 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    
+    &::before {
+      opacity: 0.25;
+    }
+    
+    &::after {
+      opacity: 0.7;
+      filter: blur(4px);
+    }
+  }
+}
+
+// Highlighted value (for Leetcode rating)
+.highlightValue {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #38bdf8, #4f46e5, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+  animation: textGlow 2s infinite alternate;
+  
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+}
+
+// Animations
+@keyframes borderGlow {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(99, 102, 241, 0.4);
   }
 } 

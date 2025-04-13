@@ -8,13 +8,13 @@ import styles from './AboutSection.module.scss';
 const statistics = [
   { value: '2+', label: 'Years Experience' },
   { value: '8+', label: 'Projects Completed' },
-  { value: '2,280', label: 'Leetcode Rating' },
+  { value: '2,280', label: 'Leetcode Rating', isHighlight: true },
   { value: '32', label: 'Contest Global Rank' },
 ];
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const isInView = useInView(containerRef, { once: false, amount: 0.15 });
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,10 +23,10 @@ export default function AboutSection() {
     
     if (isInView && statsRef.current) {
       scrollTriggerAnimation('.stat-item', {
-        y: 20,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.8,
+        y: 10, // Reduced from 20 to 10 for less aggressive animation
+        opacity: 0.3, // Starting with some opacity instead of 0
+        stagger: 0.08,
+        duration: 0.6,
         trigger: statsRef.current,
       });
     }
@@ -57,7 +57,7 @@ export default function AboutSection() {
             animate={isInView ? "visible" : "hidden"}
             variants={{
               hidden: { width: 0, opacity: 0 },
-              visible: { width: "5rem", opacity: 1, transition: { duration: 0.6 } }
+              visible: { width: "5rem", opacity: 1, transition: { duration: 0.5 } }
             }}
           />
         </div>
@@ -154,9 +154,9 @@ export default function AboutSection() {
           {statistics.map((stat, index) => (
             <div 
               key={index}
-              className={`stat-item ${styles.statsCard}`}
+              className={`stat-item ${styles.statsCard} ${stat.isHighlight ? styles.highlightCard : ''}`}
             >
-              <div className={styles.statsValue}>{stat.value}</div>
+              <div className={`${styles.statsValue} ${stat.isHighlight ? styles.highlightValue : ''}`}>{stat.value}</div>
               <div className={styles.statsLabel}>{stat.label}</div>
             </div>
           ))}
