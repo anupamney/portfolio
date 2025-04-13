@@ -2,8 +2,8 @@
 
 import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { slideInLeftVariant, slideInRightVariant, fadeUpVariant } from '@/lib/animations/motion-variants';
 import { scrollTriggerAnimation } from '@/lib/animations/gsap-animations';
+import styles from './AboutSection.module.scss';
 
 const statistics = [
   { value: '5+', label: 'Years Experience' },
@@ -33,47 +33,59 @@ export default function AboutSection() {
   }, [isInView]);
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden" style={{ backgroundColor: '#0a0a0a', color: '#ededed' }}>
-      {/* Background gradient */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 rounded-full filter blur-3xl" style={{ backgroundColor: 'rgba(59, 130, 246, 0.05)' }} />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 rounded-full filter blur-3xl" style={{ backgroundColor: 'rgba(139, 92, 246, 0.05)' }} />
+    <section id="about" className={styles.section}>
+      {/* Background gradient elements */}
+      <div className={styles.blueGradient} />
+      <div className={styles.purpleGradient} />
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={containerRef}>
-        <div className="text-center mb-16">
+      <div className={styles.container} ref={containerRef}>
+        <div className={styles.header}>
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-[#ededed]"
+            className={styles.title}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={fadeUpVariant}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+            }}
           >
-            About <span className="text-[#3b82f6]">Me</span>
+            About <span className={styles.highlight}>Me</span>
           </motion.h2>
           <motion.div 
-            className="w-20 h-1 bg-[#3b82f6] mx-auto mt-4 rounded-full"
+            className={styles.divider}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={fadeUpVariant}
+            variants={{
+              hidden: { width: 0, opacity: 0 },
+              visible: { width: "5rem", opacity: 1, transition: { duration: 0.6 } }
+            }}
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className={styles.contentGrid}>
           {/* Image with animation */}
           <motion.div
-            className="relative"
+            className={styles.imageContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={slideInLeftVariant}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { 
+                opacity: 1, 
+                x: 0, 
+                transition: { 
+                  duration: 0.8,
+                  ease: [0.215, 0.61, 0.355, 1]
+                } 
+              }
+            }}
           >
-            <div className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-xl flex items-center justify-center">
-              <div
-                className="w-full h-full flex items-center justify-center"
-                style={{ backgroundColor: '#111827', padding: '2rem' }}
-              >
+            <div className={styles.imageWrapper}>
+              <div className={styles.innerContainer}>
                 <img
                   src="/globe.svg"
                   alt="Developer Profile"
-                  className="w-full h-full object-contain"
-                  style={{ maxHeight: '250px' }}
+                  className={styles.image}
                   onError={(e) => {
                     // Fallback to a colored div if image fails to load
                     const target = e.target as HTMLImageElement;
@@ -84,38 +96,48 @@ export default function AboutSection() {
               </div>
             </div>
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 border-2 border-primary/30 rounded-lg" />
-            <div className="absolute -top-6 -right-6 w-24 h-24 border-2 border-accent/30 rounded-lg" />
+            <div className={styles.decorativeBox1} />
+            <div className={styles.decorativeBox2} />
           </motion.div>
           
           {/* Content */}
           <motion.div
-            className="space-y-6"
+            className={styles.contentContainer}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            variants={slideInRightVariant}
+            variants={{
+              hidden: { opacity: 0, x: 50 },
+              visible: { 
+                opacity: 1, 
+                x: 0, 
+                transition: { 
+                  duration: 0.8,
+                  ease: [0.215, 0.61, 0.355, 1]
+                } 
+              }
+            }}
           >
-            <h3 className="text-2xl font-semibold text-[#ededed]">
-              A passionate Full-Stack Developer based in <span className="text-[#3b82f6]">Your Location</span>
+            <h3 className={styles.contentHeading}>
+              A passionate Full-Stack Developer based in <span className={styles.highlight}>Your Location</span>
             </h3>
             
-            <p className="text-[#ededed]/80">
+            <p className={styles.contentText}>
               I design and develop services for customers of all sizes, specializing in creating
               stylish, modern websites, web services and online stores. My passion is to design
               digital user experiences through meaningful interactions. Check out my portfolio
               and see how I can help you.
             </p>
             
-            <p className="text-[#ededed]/80">
+            <p className={styles.contentText}>
               I&apos;ve always been fascinated with the intersection of design and technology.
               My approach combines clean, efficient code with thoughtful UI/UX design to create
               solutions that are both functional and beautiful.
             </p>
             
-            <div className="pt-4">
+            <div>
               <a
                 href="#contact"
-                className="inline-block bg-[#3b82f6] text-white font-medium rounded-lg px-6 py-3 transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
+                className={styles.ctaButton}
               >
                 Let&apos;s Talk
               </a>
@@ -124,17 +146,17 @@ export default function AboutSection() {
         </div>
         
         {/* Stats */}
-        <div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+        <div
+          className={styles.statsGrid}
           ref={statsRef}
         >
           {statistics.map((stat, index) => (
             <div 
               key={index}
-              className="stat-item bg-[#111827] rounded-lg p-6 text-center shadow-md border border-[#374151] transition-all duration-300 hover:shadow-lg hover:translate-y-[-5px] hover:border-[#3b82f6]/50"
+              className={`stat-item ${styles.statsCard}`}
             >
-              <div className="text-3xl md:text-4xl font-bold text-[#3b82f6] mb-2">{stat.value}</div>
-              <div className="text-sm text-[#ededed]/70">{stat.label}</div>
+              <div className={styles.statsValue}>{stat.value}</div>
+              <div className={styles.statsLabel}>{stat.label}</div>
             </div>
           ))}
         </div>

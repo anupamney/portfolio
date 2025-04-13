@@ -1,0 +1,251 @@
+// Hero section styles
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #111827 100%);
+}
+
+// Background elements
+.backgroundGradients {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.blueGlow {
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(3rem);
+  opacity: 0.2;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+}
+
+.purpleGlow {
+  position: absolute;
+  right: 25%;
+  bottom: 25%;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(3rem);
+  opacity: 0.2;
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+}
+
+.whiteGlow {
+  position: absolute;
+  left: 50%;
+  bottom: 33%;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 9999px;
+  filter: blur(3rem);
+  opacity: 0.1;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+}
+
+.darkOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.6), #0a0a0a);
+  z-index: 10;
+}
+
+// Particles
+.particlesContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+}
+
+// Content container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 20;
+
+  @media (min-width: 640px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 2rem;
+  }
+}
+
+.contentWrapper {
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+// Typography
+.heroTitle {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #ededed;
+  margin-bottom: 1.5rem;
+  position: relative;
+  
+  @media (min-width: 640px) {
+    font-size: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 4.5rem;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+    height: 0.25rem;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 9999px;
+    opacity: 0.5;
+  }
+}
+
+.highlight {
+  color: #3b82f6;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -0.125rem;
+    left: 0;
+    width: 100%;
+    height: 0.25rem;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 9999px;
+    opacity: 0.2;
+  }
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgba(237, 237, 237, 0.8);
+  margin-bottom: 2.5rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (min-width: 640px) {
+    font-size: 1.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+// Buttons
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.primaryButton {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.secondaryButton {
+  display: inline-block;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    background-color: #374151;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+// Scroll indicator
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.scrollText {
+  color: rgba(237, 237, 237, 0.6);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.mouseIcon {
+  width: 1.5rem;
+  height: 2.5rem;
+  border: 2px solid rgba(237, 237, 237, 0.2);
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.mouseWheel {
+  width: 0.25rem;
+  height: 0.375rem;
+  background-color: #3b82f6;
+  border-radius: 9999px;
+}
+
+// 3D effect for hero title
+.titleWrapper {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+} 
