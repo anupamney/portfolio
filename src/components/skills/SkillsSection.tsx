@@ -90,7 +90,7 @@ export default function SkillsSection() {
             }
           }}
         >
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <motion.div
               key={skill.name}
               className={`${styles.skillCard} ${
