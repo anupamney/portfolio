@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FiSend, FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FiSend, FiMail, FiPhone, FiMapPin, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import styles from './ContactSection.module.scss';
 
@@ -136,8 +136,8 @@ export default function ContactSection() {
             <div>
               <h3 className={styles.contactInfoHeader}>Contact Information</h3>
               <p className={styles.contactInfoText}>
-                I&apos;m open to job opportunities, collaboration, and discussing new ideas.
-                Feel free to reach out through any of the following ways.
+                I&apos;m open to job opportunities where I can contribute, learn and grow.
+                If you have a good opportunity that matches my skills, don&apos;t hesitate to contact me.
               </p>
               
               <div className={styles.contactItems}>
@@ -147,7 +147,7 @@ export default function ContactSection() {
                   </div>
                   <div className={styles.contactItemContent}>
                     <p className={styles.label}>Email</p>
-                    <p className={styles.value}>contact@example.com</p>
+                    <p className={styles.value}>anupamshandilya28@gmail.com</p>
                   </div>
                 </motion.div>
                 
@@ -157,7 +157,7 @@ export default function ContactSection() {
                   </div>
                   <div className={styles.contactItemContent}>
                     <p className={styles.label}>Phone</p>
-                    <p className={styles.value}>+1 (555) 123-4567</p>
+                    <p className={styles.value}>+91 9780781386</p>
                   </div>
                 </motion.div>
                 
@@ -167,7 +167,7 @@ export default function ContactSection() {
                   </div>
                   <div className={styles.contactItemContent}>
                     <p className={styles.label}>Location</p>
-                    <p className={styles.value}>New York, USA</p>
+                    <p className={styles.value}>Pune, India</p>
                   </div>
                 </motion.div>
               </div>
@@ -176,14 +176,16 @@ export default function ContactSection() {
             <div>
               <h4 className={styles.socialHeading}>Connect With Me</h4>
               <div className={styles.socialLinks}>
-                <a href="#github" className={styles.socialLink}>
-                  <FiGithub />
-                </a>
-                <a href="#linkedin" className={styles.socialLink}>
+                <a href="https://www.linkedin.com/in/anupam" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                   <FiLinkedin />
                 </a>
-                <a href="#twitter" className={styles.socialLink}>
-                  <FiTwitter />
+                <a href="https://leetcode.com/user4879UP/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" strokeWidth="2">
+                    <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" />
+                  </svg>
+                </a>
+                <a href="https://github.com/anupamshandilya" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                  <FiGithub />
                 </a>
               </div>
             </div>
@@ -255,7 +257,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     rows={5}
                     className={`${styles.formTextarea} ${errors.message ? styles.hasError : ''}`}
-                    placeholder="I'd like to discuss a project..."
+                    placeholder="I&apos;d like to discuss a project, opportunity, or just say hi!"
                   ></textarea>
                   {errors.message && <p className={styles.formError}>{errors.message}</p>}
                 </div>

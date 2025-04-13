@@ -9,39 +9,39 @@ import styles from './ProjectsSection.module.scss';
 const projects = [
   {
     id: 1,
-    title: 'E-commerce Platform',
-    description: 'A full-featured e-commerce platform with product management, cart, and checkout functionality.',
-    image: '/globe.svg',
-    demoUrl: '#',
+    title: 'Analytics Dashboard',
+    description: 'A comprehensive business analytics dashboard with advanced filtering and template management for visualizing business performance metrics.',
+    image: '/projects/analytics-dashboard.png',
+    demoUrl: 'https://www.mindbodyonline.com/business/features/analytics',
     codeUrl: '#',
-    tags: ['React', 'Node.js', 'MongoDB', 'Express']
+    tags: ['React', 'Next.js', 'TypeScript', 'C#', 'Aurora DB']
   },
   {
     id: 2,
-    title: 'Portfolio Website',
-    description: 'A modern, responsive portfolio website with animations and 3D elements.',
-    image: '/next.svg',
+    title: 'FastContext',
+    description: 'A high-performance React context implementation that reduces re-renders by 40% through optimized state management and selective updates.',
+    image: '/projects/fast-context.png',
     demoUrl: '#',
-    codeUrl: '#',
-    tags: ['Next.js', 'Three.js', 'TailwindCSS', 'GSAP']
+    codeUrl: 'https://github.com/anupamshandilya92/fast-context',
+    tags: ['React', 'TypeScript', 'Context API', 'Performance']
   },
   {
     id: 3,
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates.',
-    image: '/file.svg',
-    demoUrl: '#',
-    codeUrl: '#',
-    tags: ['Vue.js', 'Firebase', 'Vuex', 'Tailwind']
+    title: 'AI Portfolio Generator',
+    description: 'A web application that generates personalized portfolio websites using AI. Users can input their information and get a custom portfolio instantly.',
+    image: '/projects/portfolio-generator.png',
+    demoUrl: 'https://ai-portfolio-generator.vercel.app',
+    codeUrl: 'https://github.com/anupamshandilya92/ai-portfolio-generator',
+    tags: ['Next.js', 'OpenAI API', 'Framer Motion', 'SCSS']
   },
   {
     id: 4,
-    title: 'Weather Dashboard',
-    description: 'A weather dashboard with location search, forecasts, and interactive maps.',
-    image: '/vercel.svg',
-    demoUrl: '#',
-    codeUrl: '#',
-    tags: ['React', 'OpenWeather API', 'Redux', 'Chart.js']
+    title: 'Real-time Chat Application',
+    description: 'A full-stack real-time chat application with instant messaging, user authentication, and chat room functionality.',
+    image: '/projects/chat-app.png',
+    demoUrl: 'https://chat-app-demo.vercel.app',
+    codeUrl: 'https://github.com/anupamshandilya92/real-time-chat',
+    tags: ['React', 'Socket.io', 'Express', 'MongoDB']
   }
 ];
 
@@ -157,7 +157,7 @@ export default function ProjectsSection() {
         
         <div className={styles.githubLinkContainer}>
           <a
-            href="#"
+            href="https://github.com/anupamshandilya92"
             className={styles.githubLink}
             target="_blank"
             rel="noopener noreferrer"

@@ -6,22 +6,22 @@ import Image from 'next/image';
 import styles from './SkillsSection.module.scss';
 
 const skills = [
-  { name: 'JavaScript', icon: '/javascript.svg', level: 90 },
-  { name: 'React', icon: '/react.svg', level: 85 },
-  { name: 'Node.js', icon: '/nodejs.svg', level: 80 },
-  { name: 'TypeScript', icon: '/typescript.svg', level: 85 },
-  { name: 'Next.js', icon: '/nextjs.svg', level: 80 },
-  { name: 'GraphQL', icon: '/graphql.svg', level: 75 },
-  { name: 'Tailwind CSS', icon: '/tailwind.svg', level: 85 },
-  { name: 'MongoDB', icon: '/mongodb.svg', level: 75 },
-  { name: 'AWS', icon: '/aws.svg', level: 65 },
-  { name: 'Docker', icon: '/docker.svg', level: 70 },
-  { name: 'Git', icon: '/git.svg', level: 85 },
-  { name: 'CI/CD', icon: '/cicd.svg', level: 75 },
-  { name: 'REST API', icon: '/api.svg', level: 85 },
-  { name: 'PostgreSQL', icon: '/postgresql.svg', level: 70 },
-  { name: 'Figma', icon: '/figma.svg', level: 85 },
-  { name: 'Jest', icon: '/jest.svg', level: 80 },
+  { name: 'React.js', icon: '/react.svg', level: 95 },
+  { name: 'Next.js', icon: '/nextjs.svg', level: 90 },
+  { name: 'TypeScript', icon: '/typescript.svg', level: 90 },
+  { name: 'JavaScript', icon: '/javascript.svg', level: 95 },
+  { name: 'C#', icon: '/csharp.svg', level: 85 },
+  { name: '.NET', icon: '/dotnet.svg', level: 85 },
+  { name: 'SQL Server', icon: '/sql-server.svg', level: 80 },
+  { name: 'Aurora Postgres', icon: '/postgresql.svg', level: 75 },
+  { name: 'Jest', icon: '/jest.svg', level: 85 },
+  { name: 'Xunit', icon: '/xunit.svg', level: 80 },
+  { name: 'Git', icon: '/git.svg', level: 90 },
+  { name: 'SQLite', icon: '/sqlite.svg', level: 75 },
+  { name: 'HTML/CSS', icon: '/html5.svg', level: 90 },
+  { name: 'Algorithms', icon: '/algorithms.svg', level: 95 },
+  { name: 'Data Structures', icon: '/data-structures.svg', level: 95 },
+  { name: 'Specflow', icon: '/specflow.svg', level: 80 },
 ];
 
 export default function SkillsSection() {
@@ -32,11 +32,10 @@ export default function SkillsSection() {
   // Memoize skill categories for better performance
   const skillCategories = useMemo(() => {
     return {
-      frontend: skills.filter(s => ['JavaScript', 'React', 'TypeScript', 'Next.js', 'Tailwind CSS'].includes(s.name)),
-      backend: skills.filter(s => ['Node.js', 'GraphQL', 'MongoDB', 'REST API', 'PostgreSQL'].includes(s.name)),
-      devops: skills.filter(s => ['AWS', 'Docker', 'Git', 'CI/CD'].includes(s.name)),
-      design: skills.filter(s => ['Figma'].includes(s.name)),
-      testing: skills.filter(s => ['Jest'].includes(s.name)),
+      frontend: skills.filter(s => ['React.js', 'Next.js', 'TypeScript', 'JavaScript', 'HTML/CSS'].includes(s.name)),
+      backend: skills.filter(s => ['C#', '.NET', 'SQL Server', 'Aurora Postgres', 'SQLite'].includes(s.name)),
+      testing: skills.filter(s => ['Jest', 'Xunit', 'Specflow'].includes(s.name)),
+      other: skills.filter(s => ['Git', 'Algorithms', 'Data Structures'].includes(s.name)),
     };
   }, []);  
 

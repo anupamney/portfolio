@@ -6,10 +6,10 @@ import { scrollTriggerAnimation } from '@/lib/animations/gsap-animations';
 import styles from './AboutSection.module.scss';
 
 const statistics = [
-  { value: '5+', label: 'Years Experience' },
-  { value: '50+', label: 'Projects Completed' },
-  { value: '30+', label: 'Happy Clients' },
-  { value: '99%', label: 'Client Satisfaction' },
+  { value: '2+', label: 'Years Experience' },
+  { value: '8+', label: 'Projects Completed' },
+  { value: '2,280', label: 'Leetcode Rating' },
+  { value: '32', label: 'Contest Global Rank' },
 ];
 
 export default function AboutSection() {
@@ -83,8 +83,8 @@ export default function AboutSection() {
             <div className={styles.imageWrapper}>
               <div className={styles.innerContainer}>
                 <img
-                  src="/globe.svg"
-                  alt="Developer Profile"
+                  src="/profile.jpg"
+                  alt="Anupam Shandilya"
                   className={styles.image}
                   onError={(e) => {
                     // Fallback to a colored div if image fails to load
@@ -118,20 +118,21 @@ export default function AboutSection() {
             }}
           >
             <h3 className={styles.contentHeading}>
-              A passionate Full-Stack Developer based in <span className={styles.highlight}>Your Location</span>
+              Lead Software Engineer based in <span className={styles.highlight}>Pune, India</span>
             </h3>
             
             <p className={styles.contentText}>
-              I design and develop services for customers of all sizes, specializing in creating
-              stylish, modern websites, web services and online stores. My passion is to design
-              digital user experiences through meaningful interactions. Check out my portfolio
-              and see how I can help you.
+              I&apos;m a Lead Software Engineer at Mindbody Inc. with expertise in React.js, Next.js, 
+              TypeScript, C#, and .NET. I specialize in building high-performance web applications 
+              and delivering solutions that enhance user experience and productivity.
             </p>
             
             <p className={styles.contentText}>
-              I&apos;ve always been fascinated with the intersection of design and technology.
-              My approach combines clean, efficient code with thoughtful UI/UX design to create
-              solutions that are both functional and beautiful.
+              With a proven track record of improving application performance by up to 40% and developing 
+              innovative solutions, I&apos;ve delivered impactful projects that have increased 
+              system usability and reduced development time. My competitive programming 
+              background has sharpened my problem-solving skills, achieving a global rank 
+              of 32 in Leetcode contests and maintaining a rating of 2,280.
             </p>
             
             <div>
@@ -139,7 +140,7 @@ export default function AboutSection() {
                 href="#contact"
                 className={styles.ctaButton}
               >
-                Let&apos;s Talk
+                Get In Touch
               </a>
             </div>
           </motion.div>

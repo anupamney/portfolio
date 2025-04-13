@@ -121,8 +121,8 @@ export default function Navbar() {
             className="flex-shrink-0"
           >
             <Link href="#home" className="logo">
-              Portfolio
-              <span>.</span>
+              <span className="font-medium">Anupam </span>
+              <span className="text-[#3B82F6] font-bold">Shandilya</span>
             </Link>
           </motion.div>
 

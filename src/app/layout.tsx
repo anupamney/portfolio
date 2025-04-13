@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
@@ -16,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Developer Portfolio | Modern & Animated",
-  description: "A professional portfolio showcasing projects and skills with stunning animations",
-  keywords: "developer, portfolio, web development, frontend, backend, full-stack, React, Next.js",
+  title: "Anupam Shandilya | Lead Software Engineer",
+  description: "Professional portfolio of Anupam Shandilya, Lead Software Engineer specializing in React, Next.js, TypeScript and .NET",
+  keywords: "Anupam Shandilya, software engineer, lead developer, web development, frontend, backend, full-stack, React, Next.js, TypeScript, .NET",
 };
 
 export default function RootLayout({
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Navbar />
         <CustomCursor />
         <main>{children}</main>
+        <Footer />
         <ScrollToTop />
       </body>
     </html>
