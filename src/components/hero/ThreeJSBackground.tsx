@@ -1,11 +1,12 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Color, Vector3, Group, Mesh } from 'three';
 import { AdaptiveDpr, AdaptiveEvents, PerspectiveCamera, usePerformanceMonitor } from '@react-three/drei';
 import React from 'react';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
+import dynamic from 'next/dynamic';
 
 interface ParticleData {
   position: Vector3;
@@ -122,13 +123,41 @@ function PerformanceControl({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-export default function ThreeJSBackground() {
-  // Use a simple state to track if we're rendering in the browser
-  const [isMounted, setIsMounted] = React.useState(false);
-  const [hasError, setHasError] = React.useState(false);
+// Create a placeholder component for non-client rendering
+function BackgroundPlaceholder() {
+  return (
+    <div 
+      style={{ 
+        width: '100%', 
+        height: '100%', 
+        backgroundColor: '#0a0a0a',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 70%, transparent 100%)',
+          filter: 'blur(20px)',
+        }}
+      />
+    </div>
+  );
+}
 
-  // Only run this effect in the browser
-  React.useEffect(() => {
+// Main component implementation that will only run on client
+function ThreeJSBackgroundClient() {
+  const [isMounted, setIsMounted] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
     try {
       setIsMounted(true);
     } catch (error) {
@@ -137,41 +166,13 @@ export default function ThreeJSBackground() {
     }
   }, []);
 
-  // If we have an error or we're on the server, render a simple placeholder
   if (!isMounted || hasError) {
-    return (
-      <div 
-        style={{ 
-          width: '100%', 
-          height: '100%', 
-          backgroundColor: '#0a0a0a',
-          position: 'relative',
-          overflow: 'hidden'
-        }}
-      >
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '200px',
-            height: '200px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 70%, transparent 100%)',
-            filter: 'blur(20px)',
-          }}
-        />
-      </div>
-    );
+    return <BackgroundPlaceholder />;
   }
 
-  // Client-side rendering with full Three.js experience
   return (
-    <React.Suspense fallback={
-      <div style={{ width: '100%', height: '100%', backgroundColor: '#0a0a0a' }} />
-    }>
-      <ErrorBoundary>
+    <React.Suspense fallback={<BackgroundPlaceholder />}>
+      <ErrorBoundary fallback={<BackgroundPlaceholder />}>
         <Canvas 
           dpr={[1, 2]} // Limit DPR for performance
           gl={{ 
@@ -206,4 +207,11 @@ export default function ThreeJSBackground() {
       </ErrorBoundary>
     </React.Suspense>
   );
-} 
+}
+
+// Export a dynamic import with ssr disabled to prevent hydration issues
+const ThreeJSBackground = dynamic(() => Promise.resolve(ThreeJSBackgroundClient), {
+  ssr: false,
+});
+
+export default ThreeJSBackground; 

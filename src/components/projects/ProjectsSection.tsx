@@ -2,7 +2,8 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { fadeUpVariant, staggerContainerVariant, cardHoverVariant } from '@/lib/animations/motion-variants';
+import { fadeUpVariant, staggerContainerVariant } from '@/lib/animations/motion-variants';
+import styles from './ProjectsSection.module.scss';
 
 // Sample project data
 const projects = [
@@ -49,29 +50,27 @@ export default function ProjectsSection() {
   const isInView = useInView(containerRef, { once: false, amount: 0.2 });
   
   return (
-    <section id="projects" className="py-24" style={{ backgroundColor: '#0a0a0a', color: '#ededed' }}>
-      {/* Background elements */}
-      <div className="absolute left-0 right-0 top-0 -translate-y-1/2 h-[500px] w-full blur-3xl pointer-events-none opacity-70" 
-           style={{ background: 'linear-gradient(to bottom, rgba(139, 92, 246, 0.05), transparent)' }} />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={containerRef}>
-        <div className="text-center mb-16">
-          <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-[#ededed]"
+    <section id="projects" className={styles.section}>
+      <div className={styles.container} ref={containerRef}>
+        <div className={styles.headerContainer}>
+          <motion.div
+            className={styles.featuredWorkLabel}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUpVariant}
           >
-            My <span className="text-[#3b82f6]">Projects</span>
-          </motion.h2>
-          <motion.div 
-            className="w-20 h-1 bg-[#3b82f6] mx-auto mt-4 rounded-full"
+            Featured Work
+          </motion.div>
+          <motion.h2 
+            className={styles.title}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUpVariant}
-          />
+          >
+            My <span className={styles.highlight}>Projects</span>
+          </motion.h2>
           <motion.p
-            className="mt-6 text-[#ededed]/70 max-w-2xl mx-auto"
+            className={styles.description}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUpVariant}
@@ -81,7 +80,7 @@ export default function ProjectsSection() {
         </div>
         
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12"
+          className={styles.projectsGrid}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={staggerContainerVariant}
@@ -89,82 +88,77 @@ export default function ProjectsSection() {
           {projects.map((project) => (
             <motion.div
               key={project.id}
-              className="project-card bg-[#111827] rounded-xl overflow-hidden border border-[#374151] group shadow-md"
+              className={styles.projectCard}
               variants={fadeUpVariant}
-              initial="initial"
-              whileHover="hover"
-              animate="initial"
             >
-              <motion.div variants={cardHoverVariant} className="h-full">
-                <div className="relative h-56 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10 opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
-                  <div
-                    className="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105"
-                    style={{ backgroundColor: '#111827', padding: '1rem' }}
-                  >
+              <div className="relative">
+                <div className={styles.imageContainer}>
+                  <div className={styles.imageWrapper}>
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-contain"
-                      style={{ maxHeight: '180px' }}
+                      className={styles.projectImage}
                       onError={(e) => {
-                        // Fallback to a colored div if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.onerror = null; // Prevent infinite callbacks
+                        target.onerror = null;
                         target.style.display = 'none';
                       }}
                     />
                   </div>
                 </div>
                 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#ededed] mb-2">{project.title}</h3>
-                  <p className="text-[#ededed]/70 mb-4">{project.description}</p>
+                <div className={styles.contentContainer}>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectDescription}>{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className={styles.tagsContainer}>
                     {project.tags.map((tag, index) => (
                       <span 
                         key={index} 
-                        className="bg-[#3b82f6]/10 text-[#3b82f6] text-xs px-3 py-1 rounded-full"
+                        className={styles.tag}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex gap-4">
+                  <div className={styles.buttonsContainer}>
                     <a
                       href={project.demoUrl}
-                      className="bg-[#3b82f6] text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]"
+                      className={styles.buttonPrimary}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       Live Demo
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
                     </a>
                     <a
                       href={project.codeUrl}
-                      className="bg-[#1f2937] text-[#f3f4f6] px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]"
+                      className={styles.buttonSecondary}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       View Code
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
                     </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
         
-        <motion.div 
-          className="text-center mt-16"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariant}
-        >
+        <div className={styles.githubLinkContainer}>
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-[#3b82f6] font-medium hover:underline"
+            className={styles.githubLink}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -183,7 +177,7 @@ export default function ProjectsSection() {
               <path d="M7 7l10 10M7 17V7h10" />
             </svg>
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

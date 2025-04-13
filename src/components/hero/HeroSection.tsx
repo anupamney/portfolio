@@ -5,6 +5,20 @@ import { motion } from 'framer-motion';
 import { fadeUpVariant, staggerContainerVariant } from '@/lib/animations/motion-variants';
 import gsap from 'gsap';
 
+// Pre-computed values to avoid hydration mismatch
+const particleData = Array.from({ length: 40 }).map((_, i) => ({
+  width: (i % 8) + 2,
+  height: (i % 8) + 2,
+  background: i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#8b5cf6' : 'rgba(255,255,255,0.3)',
+  opacity: 0.1 + (i % 10) * 0.05,
+  top: (i * 2.5) % 100,
+  left: (i * 3.2) % 100,
+  yMovement: -((i % 10) * 10 + 50),
+  xMovement: (i % 20) - 10,
+  duration: (i % 10) + 15,
+  delay: (i % 5),
+}));
+
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -91,30 +105,30 @@ export default function HeroSection() {
       {/* Dark overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/20 via-[#0a0a0a]/60 to-[#0a0a0a] z-10"></div>
       
-      {/* Floating particles effect */}
+      {/* Floating particles effect - with deterministic values to avoid hydration issues */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-5">
-        {Array.from({ length: 40 }).map((_, i) => (
+        {particleData.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"
             style={{
-              width: Math.random() * 8 + 2 + 'px',
-              height: Math.random() * 8 + 2 + 'px',
-              background: i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#8b5cf6' : 'rgba(255,255,255,0.3)',
-              opacity: Math.random() * 0.5 + 0.1,
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
+              width: particle.width + 'px',
+              height: particle.height + 'px',
+              background: particle.background,
+              opacity: particle.opacity,
+              top: particle.top + '%',
+              left: particle.left + '%',
             }}
             animate={{
-              y: [0, -Math.random() * 100 - 50, 0],
-              x: [0, Math.random() * 40 - 20, 0],
-              opacity: [0.1, Math.random() * 0.5 + 0.1, 0.1],
+              y: [0, particle.yMovement, 0],
+              x: [0, particle.xMovement, 0],
+              opacity: [0.1, particle.opacity, 0.1],
             }}
             transition={{
-              duration: Math.random() * 15 + 20,
+              duration: particle.duration,
               repeat: Infinity,
               repeatType: "loop",
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
           />
         ))}

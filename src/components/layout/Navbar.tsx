@@ -112,7 +112,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <motion.div
             initial="hidden"
@@ -153,23 +153,23 @@ export default function Navbar() {
             animate="visible"
             variants={slideInRightVariant}
             onClick={toggleMenu}
-            className="md:hidden flex items-center p-2 rounded-md text-[#ededed] focus:outline-none"
+            className="md:hidden flex items-center p-1.5 rounded-md text-[#ededed] focus:outline-none"
             aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
-            <div className="w-6 h-6 relative flex flex-col justify-center items-center">
+            <div className="w-5 h-5 relative flex flex-col justify-center items-center">
               <span
-                className={`block w-5 h-0.5 bg-[#ededed] rounded-full transition-transform duration-300 ${
+                className={`block w-4 h-0.5 bg-[#ededed] rounded-full transition-transform duration-300 ${
                   isMenuOpen ? 'absolute rotate-45' : '-translate-y-1'
                 }`}
               ></span>
               <span
-                className={`block w-5 h-0.5 bg-[#ededed] rounded-full transition-opacity duration-300 ${
+                className={`block w-4 h-0.5 bg-[#ededed] rounded-full transition-opacity duration-300 ${
                   isMenuOpen ? 'opacity-0' : 'opacity-100'
                 }`}
               ></span>
               <span
-                className={`block w-5 h-0.5 bg-[#ededed] rounded-full transition-transform duration-300 ${
+                className={`block w-4 h-0.5 bg-[#ededed] rounded-full transition-transform duration-300 ${
                   isMenuOpen ? 'absolute -rotate-45' : 'translate-y-1'
                 }`}
               ></span>
@@ -185,13 +185,13 @@ export default function Navbar() {
         animate={isMenuOpen ? 'open' : 'closed'}
         variants={mobileMenuVariants}
       >
-        <div className="px-4 pt-2 pb-6 space-y-1 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#1a1a1a]">
+        <div className="px-4 pt-1 pb-4 space-y-1 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#1a1a1a]">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setIsMenuOpen(false)}
-              className="block py-3 text-[#ededed]/80 hover:text-[#3B82F6] transition-colors duration-300 text-base font-medium"
+              className="block py-2.5 text-[#ededed]/80 hover:text-[#3B82F6] transition-colors duration-300 text-base font-medium"
             >
               {item.name}
             </Link>

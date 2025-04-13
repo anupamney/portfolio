@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 
-// Import sections
+// Import sections with correct SSR settings
 const HeroSection = dynamic(() => import('@/components/hero/HeroSection'), { ssr: false });
 const AboutSection = dynamic(() => import('@/components/about/AboutSection'), { ssr: true });
 const ProjectsSection = dynamic(() => import('@/components/projects/ProjectsSection'), { ssr: true });
