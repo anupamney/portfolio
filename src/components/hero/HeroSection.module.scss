@@ -187,6 +187,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
+    color: white;
     background-color: #2563eb;
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -203,6 +204,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
+    color: #f3f4f6;
     background-color: #374151;
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

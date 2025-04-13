@@ -204,6 +204,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
+    color: white;
     background-color: #2563eb;
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -230,21 +231,47 @@
   text-align: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   border: 1px solid #1a2436;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
   
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  
   &:hover {
-    box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.2), 0 8px 12px -2px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 15px 25px -3px rgba(0, 0, 0, 0.2), 0 10px 15px -2px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(59, 130, 246, 0.4);
+    background-color: #243455;
+    
+    &::before {
+      opacity: 0.2;
+    }
+    
+    .statsValue {
+      color: #4f88ff;
+      transform: scale(1.05);
+      text-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+    
+    .statsLabel {
+      color: rgba(237, 237, 237, 1);
+    }
   }
   
   .statsValue {
     font-size: 2rem;
     font-weight: 700;
-    color: #3b82f6;
+    color: #73a5f5;
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
     
     @media (min-width: 768px) {
       font-size: 2.25rem;
@@ -252,9 +279,10 @@
   }
   
   .statsLabel {
-    color: rgba(237, 237, 237, 0.925);
+    color: white;
     font-size: 0.95rem;
     font-weight: 500;
+    transition: all 0.3s ease;
     
     @media (min-width: 768px) {
       font-size: 1rem;
