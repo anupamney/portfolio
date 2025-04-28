@@ -122,17 +122,17 @@ export default function AboutSection() {
             </h3>
             
             <p className={styles.contentText}>
-              I&apos;m a Lead Software Engineer at Mindbody Inc. with expertise in React.js, Next.js, 
-              TypeScript, C#, and .NET. I specialize in building high-performance web applications 
-              and delivering solutions that enhance user experience and productivity.
+              I&apos;m Lead SDE 1 at Mindbody Inc., with deep expertise in React.js, 
+              Next.js, TypeScript, C#, and .NET. I build high-performance web applications that 
+              enhance user experience, boost productivity, and drive results.
             </p>
             
             <p className={styles.contentText}>
-              With a proven track record of improving application performance by up to 40% and developing 
-              innovative solutions, I&apos;ve delivered impactful projects that have increased 
-              system usability and reduced development time. My competitive programming 
-              background has sharpened my problem-solving skills, achieving a global rank 
-              of 32 in Leetcode contests and maintaining a rating of 2,280.
+              I&apos;ve led initiatives that improved application performance by up to 40%, 
+              streamlined development workflows, and delivered solutions that users love. 
+              With a background in competitive programming — ranking 32nd globally in LeetCode 
+              contests and achieving a peak rating of 2,280 — I bring sharp problem-solving 
+              skills and a passion for clean, scalable software.
             </p>
             
             <div>
