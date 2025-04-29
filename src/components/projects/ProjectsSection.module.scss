@@ -78,6 +78,9 @@
   overflow: hidden;
   border-bottom: 1px solid #1f2937;
   background-color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .imageWrapper {
@@ -87,10 +90,14 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  box-sizing: border-box;
 }
 
 .projectImage {
-  max-height: 110px;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 

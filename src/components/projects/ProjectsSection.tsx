@@ -2,16 +2,16 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import { fadeUpVariant, staggerContainerVariant } from '@/lib/animations/motion-variants';
 import styles from './ProjectsSection.module.scss';
 
-// Sample project data
 const projects = [
   {
     id: 1,
     title: 'Analytics Dashboard',
     description: 'A comprehensive business analytics dashboard with advanced filtering and template management for visualizing business performance metrics.',
-    image: '/projects/analytics-dashboard.png',
+    image: '/projects/animated/analytics-dashboard.svg',
     demoUrl: 'https://www.mindbodyonline.com/business/features/analytics',
     codeUrl: '#',
     tags: ['React', 'Next.js', 'TypeScript', 'C#', 'Aurora DB']
@@ -20,7 +20,7 @@ const projects = [
     id: 2,
     title: 'FastContext',
     description: 'A high-performance React context implementation that reduces re-renders by 40% through optimized state management and selective updates.',
-    image: '/projects/fast-context.png',
+    image: '/projects/animated/fast-context.svg',
     demoUrl: '#',
     codeUrl: 'https://github.com/anupamshandilya92/fast-context',
     tags: ['React', 'TypeScript', 'Context API', 'Performance']
@@ -29,19 +29,19 @@ const projects = [
     id: 3,
     title: 'AI Portfolio Generator',
     description: 'A web application that generates personalized portfolio websites using AI. Users can input their information and get a custom portfolio instantly.',
-    image: '/projects/portfolio-generator.png',
+    image: '/projects/animated/portfolio-generator.svg',
     demoUrl: 'https://ai-portfolio-generator.vercel.app',
     codeUrl: 'https://github.com/anupamshandilya92/ai-portfolio-generator',
     tags: ['Next.js', 'OpenAI API', 'Framer Motion', 'SCSS']
   },
   {
-    id: 4,
-    title: 'Real-time Chat Application',
-    description: 'A full-stack real-time chat application with instant messaging, user authentication, and chat room functionality.',
-    image: '/projects/chat-app.png',
-    demoUrl: 'https://chat-app-demo.vercel.app',
-    codeUrl: 'https://github.com/anupamshandilya92/real-time-chat',
-    tags: ['React', 'Socket.io', 'Express', 'MongoDB']
+    "id": 4,
+    "title": "Quknote",
+    "description": "A modern note-taking application with tagging, search functionality, and AI-powered tag suggestions using Google's Gemini API.",
+    "image": "/projects/animated/quknote.svg",
+    "demoUrl": "https://quknote-6br7.vercel.app/",
+    "codeUrl": "https://github.com/anupamney/quknote",
+    "tags": ["React", "TypeScript", "ASP.NET Core", "Google Gemini API", "Material UI"]
   }
 ];
 
@@ -94,15 +94,14 @@ export default function ProjectsSection() {
               <div className="relative">
                 <div className={styles.imageContainer}>
                   <div className={styles.imageWrapper}>
-                    <img
-                      src={project.image}
+                    <Image
+                      src={typeof project.image === 'string' ? project.image : '/images/fallback-image.svg'}
                       alt={project.title}
+                      width={500}
+                      height={300}
                       className={styles.projectImage}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.onerror = null;
-                        target.style.display = 'none';
-                      }}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMWUxZTEiLz48L3N2Zz4="
                     />
                   </div>
                 </div>

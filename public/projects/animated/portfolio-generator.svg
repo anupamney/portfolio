@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    .code-line {
+      stroke: #64748b;
+      stroke-width: 1;
+      animation: grow 3s ease-in-out infinite alternate;
+    }
+    .code-line-1 { animation-delay: 0s; }
+    .code-line-2 { animation-delay: 0.2s; }
+    .code-line-3 { animation-delay: 0.4s; }
+    .code-line-4 { animation-delay: 0.6s; }
+    .code-line-5 { animation-delay: 0.8s; }
+    
+    .website {
+      stroke: #6366f1;
+      stroke-width: 2;
+      fill: #f8fafc;
+    }
+    
+    .arrow {
+      stroke: #64748b;
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 20;
+      stroke-dashoffset: 20;
+      animation: dash 2s ease-in-out infinite;
+    }
+    
+    .ai-circle {
+      fill: #6366f1;
+      opacity: 0.8;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes grow {
+      from { transform: scaleX(0.3); }
+      to { transform: scaleX(1); }
+    }
+    
+    @keyframes dash {
+      0% { stroke-dashoffset: 20; }
+      50% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 20; }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 0.9; }
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="200" height="200" rx="10" fill="#f8fafc" />
+  
+  <!-- Code editor section -->
+  <rect x="30" y="40" width="60" height="120" rx="5" fill="#f1f5f9" />
+  
+  <!-- Code lines -->
+  <line class="code-line code-line-1" x1="40" y1="60" x2="80" y2="60" transform-origin="40 60" />
+  <line class="code-line code-line-2" x1="40" y1="80" x2="75" y2="80" transform-origin="40 80" />
+  <line class="code-line code-line-3" x1="40" y1="100" x2="70" y2="100" transform-origin="40 100" />
+  <line class="code-line code-line-4" x1="40" y1="120" x2="80" y2="120" transform-origin="40 120" />
+  <line class="code-line code-line-5" x1="40" y1="140" x2="75" y2="140" transform-origin="40 140" />
+  
+  <!-- AI circle -->
+  <circle class="ai-circle" cx="120" cy="100" r="15" transform-origin="120 100" />
+  <text x="120" y="104" text-anchor="middle" font-family="Arial" font-size="10" fill="white">AI</text>
+  
+  <!-- Arrow -->
+  <path class="arrow" d="M90 100 L110 100" />
+  
+  <!-- Website -->
+  <rect class="website" x="140" y="60" width="40" height="80" rx="3" />
+  <line x1="145" y1="70" x2="175" y2="70" stroke="#6366f1" stroke-width="1" />
+  <line x1="145" y1="80" x2="175" y2="80" stroke="#6366f1" stroke-width="1" />
+  <rect x="145" y="90" width="30" height="20" rx="2" fill="#6366f1" opacity="0.2" />
+  <line x1="145" y1="120" x2="165" y2="120" stroke="#6366f1" stroke-width="1" />
+  <line x1="145" y1="130" x2="160" y2="130" stroke="#6366f1" stroke-width="1" />
+</svg> 

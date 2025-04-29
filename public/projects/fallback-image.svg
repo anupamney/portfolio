@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    .circle {
+      fill: #6366f1;
+      opacity: 0.2;
+    }
+    .icon {
+      fill: none;
+      stroke: #6366f1;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="200" height="200" rx="10" fill="#f8fafc" />
+  
+  <!-- Image icon -->
+  <circle class="circle" cx="100" cy="100" r="40" />
+  <path class="icon" d="M70 80 L130 80 L130 120 L70 120 Z" />
+  <path class="icon" d="M70 100 L90 115 L110 95 L130 110" />
+  <circle class="icon" cx="85" cy="95" r="5" />
+</svg> 

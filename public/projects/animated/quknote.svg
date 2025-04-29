@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    .note {
+      fill: #f8fafc;
+      stroke: #64748b;
+      stroke-width: 1;
+      transform-origin: center;
+    }
+    .note-1 {
+      animation: float 3s ease-in-out infinite;
+    }
+    .note-2 {
+      animation: float 3s ease-in-out 0.5s infinite;
+    }
+    .note-3 {
+      animation: float 3s ease-in-out 1s infinite;
+    }
+    .tag {
+      fill: #6366f1;
+      opacity: 0.8;
+      rx: 5;
+    }
+    .tag-1 {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .tag-2 {
+      animation: pulse 2s ease-in-out 0.7s infinite;
+    }
+    .ai-glow {
+      fill: #6366f1;
+      opacity: 0.3;
+      animation: glow 3s ease-in-out infinite;
+    }
+    .text-line {
+      stroke: #64748b;
+      stroke-width: 1;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.9; }
+    }
+    @keyframes glow {
+      0%, 100% { opacity: 0.2; r: 12; }
+      50% { opacity: 0.4; r: 14; }
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="200" height="200" rx="10" fill="#f8fafc" />
+  
+  <!-- Notes -->
+  <g class="note-1">
+    <rect class="note" x="40" y="50" width="70" height="90" rx="5" />
+    <line class="text-line" x1="50" y1="70" x2="100" y2="70" />
+    <line class="text-line" x1="50" y1="85" x2="90" y2="85" />
+    <line class="text-line" x1="50" y1="100" x2="95" y2="100" />
+    <rect class="tag tag-1" x="50" y="115" width="30" height="10" rx="5" />
+  </g>
+  
+  <g class="note-2">
+    <rect class="note" x="65" y="60" width="70" height="90" rx="5" />
+    <line class="text-line" x1="75" y1="80" x2="125" y2="80" />
+    <line class="text-line" x1="75" y1="95" x2="115" y2="95" />
+    <line class="text-line" x1="75" y1="110" x2="120" y2="110" />
+    <rect class="tag tag-2" x="75" y="125" width="25" height="10" rx="5" />
+  </g>
+  
+  <g class="note-3">
+    <rect class="note" x="90" y="70" width="70" height="90" rx="5" />
+    <line class="text-line" x1="100" y1="90" x2="150" y2="90" />
+    <line class="text-line" x1="100" y1="105" x2="140" y2="105" />
+    <line class="text-line" x1="100" y1="120" x2="145" y2="120" />
+    <rect class="tag tag-1" x="100" y="135" width="35" height="10" rx="5" />
+  </g>
+  
+  <!-- AI Element -->
+  <circle class="ai-glow" cx="155" cy="60" r="12" />
+  <text x="155" y="64" font-family="Arial" font-size="10" text-anchor="middle" fill="#6366f1">AI</text>
+</svg> 

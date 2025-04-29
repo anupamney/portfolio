@@ -2,26 +2,27 @@
 
 import { useRef, useMemo, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
 import styles from './SkillsSection.module.scss';
+import { FaReact, FaGitAlt, FaCode, FaCheckSquare, FaDatabase, FaJs, FaHtml5, FaWindows } from 'react-icons/fa';
+import { DiMsqlServer } from 'react-icons/di';
 
 const skills = [
-  { name: 'React.js', icon: '/react.svg', level: 95 },
-  { name: 'Next.js', icon: '/nextjs.svg', level: 90 },
-  { name: 'TypeScript', icon: '/typescript.svg', level: 90 },
-  { name: 'JavaScript', icon: '/javascript.svg', level: 95 },
-  { name: 'C#', icon: '/csharp.svg', level: 85 },
-  { name: '.NET', icon: '/dotnet.svg', level: 85 },
-  { name: 'SQL Server', icon: '/sql-server.svg', level: 80 },
-  { name: 'Aurora Postgres', icon: '/postgresql.svg', level: 75 },
-  { name: 'Jest', icon: '/jest.svg', level: 85 },
-  { name: 'Xunit', icon: '/xunit.svg', level: 80 },
-  { name: 'Git', icon: '/git.svg', level: 90 },
-  { name: 'SQLite', icon: '/sqlite.svg', level: 75 },
-  { name: 'HTML/CSS', icon: '/html5.svg', level: 90 },
-  { name: 'Algorithms', icon: '/algorithms.svg', level: 95 },
-  { name: 'Data Structures', icon: '/data-structures.svg', level: 95 },
-  { name: 'Specflow', icon: '/specflow.svg', level: 80 },
+  { name: 'React.js', icon: <FaReact />, level: 95 },
+  { name: 'Next.js', icon: <FaReact />, level: 90 },
+  { name: 'TypeScript', icon: <FaCode />, level: 90 },
+  { name: 'JavaScript', icon: <FaJs />, level: 95 },
+  { name: 'C#', icon: <FaCode />, level: 85 },
+  { name: '.NET', icon: <FaWindows />, level: 85 },
+  { name: 'SQL Server', icon: <DiMsqlServer />, level: 80 },
+  { name: 'Aurora Postgres', icon: <FaDatabase />, level: 75 },
+  { name: 'Jest', icon: <FaCheckSquare />, level: 85 },
+  { name: 'Xunit', icon: <FaCheckSquare />, level: 80 },
+  { name: 'Git', icon: <FaGitAlt />, level: 90 },
+  { name: 'SQLite', icon: <FaDatabase />, level: 75 },
+  { name: 'HTML/CSS', icon: <FaHtml5 />, level: 90 },
+  { name: 'Algorithms', icon: <FaCode />, level: 95 },
+  { name: 'Data Structures', icon: <FaCode />, level: 95 },
+  { name: 'Specflow', icon: <FaDatabase />, level: 80 },
 ];
 
 export default function SkillsSection() {
@@ -112,18 +113,9 @@ export default function SkillsSection() {
                     : styles.default
                 }`}>
                   <div className={styles.iconWrapper}>
-                    <Image
-                      src={skill.icon}
-                      alt={`${skill.name} icon`}
-                      fill
-                      sizes="24px"
-                      className="object-contain"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.onerror = null;
-                        target.src = '/file.svg'; // Fallback icon
-                      }}
-                    />
+                    <span className={styles.reactIcon} style={{ fontSize: '24px', color: 'currentColor' }}>
+                      {skill.icon}
+                    </span>
                   </div>
                 </div>
                 <h3 className={styles.skillName}>{skill.name}</h3>
