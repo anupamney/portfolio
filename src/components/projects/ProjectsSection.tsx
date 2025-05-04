@@ -12,27 +12,27 @@ const projects = [
     title: 'Analytics Dashboard',
     description: 'A comprehensive business analytics dashboard with advanced filtering and template management for visualizing business performance metrics.',
     image: '/projects/animated/analytics-dashboard.svg',
-    demoUrl: 'https://www.mindbodyonline.com/business/features/analytics',
+    demoUrl: 'https://support.mindbodyonline.com/s/article/Analytics-2-0?language=en_US',
     codeUrl: '#',
-    tags: ['React', 'Next.js', 'TypeScript', 'C#', 'Aurora DB']
+    tags: ['React', 'Next.js', 'TypeScript', 'C#', '.NET Core', 'Sigma']
   },
   {
     id: 2,
     title: 'FastContext',
     description: 'A high-performance React context implementation that reduces re-renders by 40% through optimized state management and selective updates.',
     image: '/projects/animated/fast-context.svg',
-    demoUrl: '#',
-    codeUrl: 'https://github.com/anupamshandilya92/fast-context',
+    demoUrl: 'https://www.npmjs.com/package/selective-fast-context',
+    codeUrl: 'https://github.com/anupamney/fast-context',
     tags: ['React', 'TypeScript', 'Context API', 'Performance']
   },
   {
     id: 3,
-    title: 'AI Portfolio Generator',
-    description: 'A web application that generates personalized portfolio websites using AI. Users can input their information and get a custom portfolio instantly.',
-    image: '/projects/animated/portfolio-generator.svg',
-    demoUrl: 'https://ai-portfolio-generator.vercel.app',
-    codeUrl: 'https://github.com/anupamshandilya92/ai-portfolio-generator',
-    tags: ['Next.js', 'OpenAI API', 'Framer Motion', 'SCSS']
+    title: "EduSat Test Series",
+    description: "A solution for an exam practice paper distribution system that enables schools to effortlessly place\r orders, manage, and track practice paper set orders",
+    image: "/projects/animated/portfolio-generator.svg",
+    demoUrl: 'https://edu-sat-test-series-ui-17rw.vercel.app/login',
+    codeUrl: "https://github.com/anupamney/EduSat.TestSeries.UI",
+    tags: ["React", "TypeScript", "Material UI", "Vite", "Axios", "React Router"]
   },
   {
     "id": 4,
