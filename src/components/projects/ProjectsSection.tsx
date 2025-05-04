@@ -1,11 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { fadeUpVariant, staggerContainerVariant } from '@/lib/animations/motion-variants';
 import styles from './ProjectsSection.module.scss';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
+import RequestCodeAccessDialog from './RequestCodeAccessDialog';
 
 const projects = [
   {
@@ -49,7 +49,20 @@ const projects = [
 export default function ProjectsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.2 });
-  
+
+  const [openDialogProjectId, setOpenDialogProjectId] = useState<number | null>(null);
+  const [selectedProjectTitle, setSelectedProjectTitle] = useState<string>('');
+
+  const handleOpenDialog = (projectId: number, projectTitle: string) => {
+    setSelectedProjectTitle(projectTitle);
+    setOpenDialogProjectId(projectId);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialogProjectId(null);
+    setSelectedProjectTitle('');
+  };
+
   return (
     <section id="projects" className={styles.section}>
       <div className={styles.container} ref={containerRef}>
@@ -96,10 +109,10 @@ export default function ProjectsSection() {
                 <div className={styles.imageContainer}>
                   <div className={styles.imageWrapper}>
                     <DotLottieReact
-      src={project.image}
-      loop
-      autoplay
-    />
+                      src={project.image}
+                      loop
+                      autoplay
+                    />
                   </div>
                 </div>
                 
@@ -132,18 +145,16 @@ export default function ProjectsSection() {
                         <line x1="10" y1="14" x2="21" y2="3"></line>
                       </svg>
                     </a>
-                    <a
-                      href={project.codeUrl}
+                    <button
+                      onClick={() => handleOpenDialog(project.id, project.title)}
                       className={styles.buttonSecondary}
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
-                      View Code
+                      Request Code Access
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="16 18 22 12 16 6"></polyline>
                         <polyline points="8 6 2 12 8 18"></polyline>
                       </svg>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -175,6 +186,12 @@ export default function ProjectsSection() {
           </a>
         </div>
       </div>
+
+      <RequestCodeAccessDialog
+        isOpen={openDialogProjectId !== null}
+        onClose={handleCloseDialog}
+        projectTitle={selectedProjectTitle}
+      />
     </section>
   );
-} 
+}

@@ -189,6 +189,17 @@ h1, h2, h3, h4, h5, h6 {
   --input: #e5e7eb;
   --ring: #3b82f6;
   
+  /* Dialog component variables */
+  --background-primary: #ffffff;
+  --background-secondary: #f9fafb;
+  --background-disabled: #f3f4f6;
+  --text-primary: #171717;
+  --text-secondary: #4b5563;
+  --text-highlight: #111827;
+  --border-color: #e5e7eb;
+  --accent-color: #3b82f6;
+  --accent-color-hover: #2563eb;
+  
   /* Animation variables */
   --transition-slow: 0.5s;
   --transition-medium: 0.3s;
@@ -214,6 +225,17 @@ h1, h2, h3, h4, h5, h6 {
     --border: #374151;
     --input: #374151;
     --ring: #3b82f6;
+    
+    /* Dialog component variables - dark mode */
+    --background-primary: #111827;
+    --background-secondary: #1f2937;
+    --background-disabled: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-highlight: #f3f4f6;
+    --border-color: #374151;
+    --accent-color: #3b82f6;
+    --accent-color-hover: #2563eb;
   }
 }
 
