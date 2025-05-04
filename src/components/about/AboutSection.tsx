@@ -114,7 +114,7 @@ export default function AboutSection() {
             }}
           >
             <h3 className={styles.contentHeading}>
-              Lead Software Engineer based in <span className={styles.highlight}>Pune, India</span>
+              Software Engineer based in <span className={styles.highlight}>Pune, India</span>
             </h3>
             
             <p className={styles.contentText}>
