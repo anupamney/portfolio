@@ -2,16 +2,17 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
 import { fadeUpVariant, staggerContainerVariant } from '@/lib/animations/motion-variants';
 import styles from './ProjectsSection.module.scss';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
 
 const projects = [
   {
     id: 1,
     title: 'Analytics Dashboard',
     description: 'A comprehensive business analytics dashboard with advanced filtering and template management for visualizing business performance metrics.',
-    image: '/projects/animated/analytics-dashboard.svg',
+    image: 'https://lottie.host/700d2795-3317-4b33-b5ad-519cc25e7403/Yq29Oybc9P.lottie',
     demoUrl: 'https://support.mindbodyonline.com/s/article/Analytics-2-0?language=en_US',
     codeUrl: '#',
     tags: ['React', 'Next.js', 'TypeScript', 'C#', '.NET Core', 'Sigma']
@@ -20,7 +21,7 @@ const projects = [
     id: 2,
     title: 'FastContext',
     description: 'A high-performance React context implementation that reduces re-renders by 40% through optimized state management and selective updates.',
-    image: '/projects/animated/fast-context.svg',
+    image: 'https://lottie.host/fe193d56-5f07-462f-94e7-a05fbaf39b0c/ZS9zRbVvCA.lottie',
     demoUrl: 'https://www.npmjs.com/package/selective-fast-context',
     codeUrl: 'https://github.com/anupamney/fast-context',
     tags: ['React', 'TypeScript', 'Context API', 'Performance']
@@ -29,7 +30,7 @@ const projects = [
     id: 3,
     title: "EduSat Test Series",
     description: "A solution for an exam practice paper distribution system that enables schools to effortlessly place\r orders, manage, and track practice paper set orders",
-    image: "/projects/animated/portfolio-generator.svg",
+    image: "https://lottie.host/ed07f13e-6c50-4d64-98e6-82e243045d74/5yeVw6LUgb.lottie",
     demoUrl: 'https://edu-sat-test-series-ui-17rw.vercel.app/login',
     codeUrl: "https://github.com/anupamney/EduSat.TestSeries.UI",
     tags: ["React", "TypeScript", "Material UI", "Vite", "Axios", "React Router"]
@@ -38,7 +39,7 @@ const projects = [
     "id": 4,
     "title": "Quknote",
     "description": "A modern note-taking application with tagging, search functionality, and AI-powered tag suggestions using Google's Gemini API.",
-    "image": "/projects/animated/quknote.svg",
+    "image": "https://lottie.host/070e423b-229a-41f7-a68c-22295d498bdd/U59tXUtVNs.lottie",
     "demoUrl": "https://quknote-6br7.vercel.app/",
     "codeUrl": "https://github.com/anupamney/quknote",
     "tags": ["React", "TypeScript", "ASP.NET Core", "Google Gemini API", "Material UI"]
@@ -94,15 +95,11 @@ export default function ProjectsSection() {
               <div className="relative">
                 <div className={styles.imageContainer}>
                   <div className={styles.imageWrapper}>
-                    <Image
-                      src={typeof project.image === 'string' ? project.image : '/images/fallback-image.svg'}
-                      alt={project.title}
-                      width={500}
-                      height={300}
-                      className={styles.projectImage}
-                      placeholder="blur"
-                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlMWUxZTEiLz48L3N2Zz4="
-                    />
+                    <DotLottieReact
+      src={project.image}
+      loop
+      autoplay
+    />
                   </div>
                 </div>
                 
@@ -156,7 +153,7 @@ export default function ProjectsSection() {
         
         <div className={styles.githubLinkContainer}>
           <a
-            href="https://github.com/anupamshandilya92"
+            href="https://github.com/anupamney"
             className={styles.githubLink}
             target="_blank"
             rel="noopener noreferrer"
