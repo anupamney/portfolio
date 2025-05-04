@@ -25,7 +25,7 @@ export default function HeroSection() {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && titleRef.current) {
+    if (titleRef.current) {
       const text = titleRef.current;
       
       const handleMouseMove = (e: MouseEvent) => {

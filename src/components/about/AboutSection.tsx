@@ -3,6 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { scrollTriggerAnimation } from '@/lib/animations/gsap-animations';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import styles from './AboutSection.module.scss';
 
 const statistics = [
@@ -81,18 +82,13 @@ export default function AboutSection() {
             }}
           >
             <div className={styles.imageWrapper}>
-              <div className={styles.innerContainer}>
-                <img
-                  src="/profile.jpg"
-                  alt="Anupam Shandilya"
-                  className={styles.image}
-                  onError={(e) => {
-                    // Fallback to a colored div if image fails to load
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null; // Prevent infinite callbacks
-                    target.style.display = 'none';
-                  }}
-                />
+            <div className={styles.innerContainer}>
+            <DotLottieReact
+      src="https://lottie.host/d8d02246-b8e7-40cc-9acd-acedb0b0e46b/iMgvpASVRk.lottie"
+      loop
+      autoplay
+    />
+                
               </div>
             </div>
             {/* Decorative elements */}
